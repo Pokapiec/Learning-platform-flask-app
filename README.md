@@ -7,5 +7,6 @@ EER diagram
 ![image](https://user-images.githubusercontent.com/64706471/122382629-64d38980-cf6a-11eb-957a-c35601346ce3.png)
 
 Logic diagram:
+
 ![image](https://user-images.githubusercontent.com/64706471/122382695-7452d280-cf6a-11eb-91c1-925f8f58e321.png)
 
