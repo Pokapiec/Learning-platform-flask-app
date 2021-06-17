@@ -1,0 +1,86 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Lista podopiecznych</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static',filename='lista.css') }}" rel="stylesheet">
+
+  </head>
+
+  	<body class="text-center">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="/">Kursbook</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/przypisz_podopiecznego">Przypisz podopiecznego</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/lista_uczniow">Oceń test</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/lista_podopiecznych">Sprawdź wyniki</a>
+                    </li>
+
+                </ul>
+
+                <ul class="navbar-nav">
+                    {% if "uzytkownik" not in session %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logowanie">Logowanie</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/rejestracja">Rejestracja</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/wyloguj">Wyloguj</a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+            </div>
+        </nav>
+
+
+  		<br><br>
+	  	<main>
+            
+		  <ol class="gradient-list">
+            {% for i in opiekunowe %}
+                {% if i[0] ==  id_uzytk and i[2] == 1 %}
+                    <li><a href = " https://www.litmus.com/blog/the-ultimate-guide-to-bulleted-lists-in-html-email/">Podopieczny {{i[1]}}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% for u in testy %}
+                <!-- {% if u[0] == id_uzytk %} -->
+                <li><a href = "/zobacz_wynik/{{u[1]}}" method="get">Test {{u[1]}}</a></li>
+                <!-- {% endif %} -->
+            {% endfor %}
+		  </ol>
+		</main>
+
+  	</body>
+</html>
